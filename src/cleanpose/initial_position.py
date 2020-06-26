@@ -14,7 +14,6 @@ from natsort import natsorted
 import sys
 import time
 import matplotlib
-matplotlib.use('tkagg')
 
 
 class InitialPosition:
@@ -55,6 +54,8 @@ class InitialPosition:
         # self.fig.canvas.mpl_connect('close_event', self.save_data)
 
     def run(self):
+        matplotlib.use('tkagg')
+
         self.fig, self.ax = plt.subplots()
 
         s, frame = self.get_frame()
