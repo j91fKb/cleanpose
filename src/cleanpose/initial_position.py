@@ -13,6 +13,8 @@ import numpy as np
 from natsort import natsorted
 import sys
 import time
+import matplotlib
+matplotlib.use('tkagg')
 
 
 class InitialPosition:
