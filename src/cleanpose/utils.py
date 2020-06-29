@@ -7,7 +7,7 @@ def get_folders_with_patterns(folder, patterns=[]):
     folders = set()
 
     for file in folder.rglob('*'):
-        if file.is_file() and (file.parent in folders or not matches(str(file), patterns)):
+        if not file.is_file() or file.parent in folders or not matches(str(file), patterns):
             continue
         folders.add(file.parent)
 
@@ -19,3 +19,4 @@ def matches(string, patterns):
         if pattern not in string:
             return False
     return True
+    

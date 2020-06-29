@@ -12,6 +12,9 @@ class Smooth:
         self.save_dir = self.folder / '02_smoothed_pose'
 
     def run(self):
+        if not self.save_dir.is_dir():
+            self.save_dir.mkdir()
+
         for i, file in enumerate(self.data_files):
             print(f'file {i + 1} of {len(self.data_files)}')
 
