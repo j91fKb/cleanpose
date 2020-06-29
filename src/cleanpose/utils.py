@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def get_folders_with_pattern(folder, patterns=[]):
+def get_folders_with_patterns(folder, patterns=[]):
     folder = Path(folder)
 
     folders = set()

@@ -1,5 +1,5 @@
-from cleanpose import RunOpenPose, OpenPoseVideo, ExtractPose, InitialPosition, FilterPose
-from cleanpose.utils import get_folders_with_pattern
+from cleanpose import RunOpenPose, OpenPoseVideo, ExtractPose, InitialPosition, FilterPose, Smooth
+from cleanpose.utils import get_folders_with_patterns
 
 # RUN
 openpose_dir = '/home/worker/openpose'
@@ -13,21 +13,23 @@ run.run()
 
 # EXTRACT
 folder = '/home/worker/cleanpose/test/out'
-folders = get_folders_with_pattern(folder, pattern='.json')
+folders = get_folders_with_patterns(
+    folder, patterns=['.json'])  # can specify multiple patterns
 for f in folders:
     extract = ExtractPose(f)
     extract.run()
 
 # INITIAL POSITIONS
-folder = '/home/worker/cleanpose/test/out'
-folders = get_folders_with_pattern(folder, pattern='.json')
 for f in folders:
     init_pos = InitialPosition(f)
     init_pos.run()
 
 # FILTER
-folder = '/home/worker/cleanpose/test/out'
-folders = get_folders_with_pattern(folder, pattern='.json')
 for f in folders:
     filter = FilterPose(f)
     filter.run()
+
+# SMOOTH
+for f in folders:
+    smooth = Smooth(f)
+    smooth.run()
