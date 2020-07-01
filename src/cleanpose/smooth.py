@@ -5,11 +5,15 @@ from pathlib import Path
 
 
 class Smooth:
-    def __init__(self, folder):
+    def __init__(self, folder, face=False):
         self.folder = Path(folder)
         self.data_dir = self.folder / '01_filtered_pose'
+        if face:
+            self.data_dir = self.folder / '01_filtered_face'
         self.data_files = natsorted(list(self.data_dir.glob('*.npy')))
         self.save_dir = self.folder / '02_smoothed_pose'
+        if face:
+            self.data_dir = self.folder / '02_smoothed_face'
 
     def run(self):
         if not self.save_dir.is_dir():
