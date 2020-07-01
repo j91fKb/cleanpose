@@ -105,8 +105,12 @@ class InitialPosition:
             pose = np.load(self.pose_folder / f)
 
             name = f.replace('.npy', '')
-            self.data.loc[self.data['name'] == name,
+            if pose.size > 0:
+                self.data.loc[self.data['name'] == name,
                           ['x', 'y']] = pose[0, 0, 0, :2]
+            else:
+                self.data.loc[self.data['name'] == name,
+                          ['x', 'y']] = [0, 0]
 
     def plot_point(self):
         if self.data.iloc[self.ind, 1] and self.data.iloc[self.ind, 2]:

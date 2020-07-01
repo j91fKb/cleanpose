@@ -37,6 +37,9 @@ class FilterPose:
 
             name = video_name.replace("_labeled.mp4", "")
             pose = self.get_pose(name)
+            if pose.size == 0:
+                continue
+
             index_per_frame = self.find_subject(name, pose)
             selected_pose = self.get_selected_pose(index_per_frame, pose)
             fig = self.plot_results(name, selected_pose, pose)
