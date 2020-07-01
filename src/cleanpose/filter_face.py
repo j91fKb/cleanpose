@@ -26,7 +26,7 @@ class FilterFace:
             os.mkdir(self.save_dir)
 
         files = natsorted([f for f in self.data_dir.glob('*.npy')])
-        for i, f in files:
+        for i, f in enumerate(files):
             print(f'file {i + 1} out of {len(files)}')
             name = f.stem
 

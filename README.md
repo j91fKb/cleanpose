@@ -52,4 +52,14 @@ for f in folders:
 for f in folders:
     smooth = Smooth(f)
     smooth.run()
+
+# FACE
+extract = ExtractFace(f)
+extract.run()
+
+filter = FilterFace(f)
+filter.run()
+
+smooth = Smooth(f, face=True)
+smooth.run()
 ```

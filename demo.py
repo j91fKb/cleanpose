@@ -1,4 +1,4 @@
-from cleanpose import RunOpenPose, OpenPoseVideo, ExtractPose, InitialPosition, FilterPose, Smooth
+from cleanpose import RunOpenPose, OpenPoseVideo, ExtractPose, InitialPosition, FilterPose, Smooth, ExtractFace, FilterFace
 from cleanpose.utils import get_folders_with_patterns
 
 # RUN
@@ -33,3 +33,14 @@ for f in folders:
 for f in folders:
     smooth = Smooth(f)
     smooth.run()
+
+
+# FACE
+extract = ExtractFace(f)
+extract.run()
+
+filter = FilterFace(f)
+filter.run()
+
+smooth = Smooth(f, face=True)
+smooth.run()
