@@ -25,12 +25,12 @@ class FilterFace:
         if not self.save_dir.is_dir():
             os.mkdir(self.save_dir)
 
-        files = natsorted([f for f in self.data_dir.glob('*.npy')])
+        files = natsorted([f for f in self.filter_dir.parent.glob('*.npy')])
         for i, f in enumerate(files):
             print(f'file {i + 1} out of {len(files)}')
             name = f.stem
 
-            data = np.load(f)
+            data = np.load(self.data_dir / f'{name}.npy')
             indexes = np.load(self.filter_dir / f'{name}_subject_index.npy')
 
             if data.size == 0 or indexes.size == 0:
