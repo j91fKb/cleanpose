@@ -13,7 +13,7 @@ class Smooth:
         self.data_files = natsorted(list(self.data_dir.glob('*.npy')))
         self.save_dir = self.folder / '02_smoothed_pose'
         if face:
-            self.data_dir = self.folder / '02_smoothed_face'
+            self.save_dir = self.folder / '02_smoothed_face'
 
     def run(self):
         if not self.save_dir.is_dir():
