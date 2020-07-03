@@ -9,6 +9,7 @@ from matplotlib.lines import Line2D
 import cv2
 from natsort import natsorted
 import copy
+from tqdm import tqdm
 
 
 class FilterFace:
@@ -26,8 +27,8 @@ class FilterFace:
             os.mkdir(self.save_dir)
 
         files = natsorted([f for f in self.filter_dir.parent.glob('*.npy')])
-        for i, f in enumerate(files):
-            print(f'file {i + 1} out of {len(files)}')
+        for f in tqdm(files):
+            # print(f'file {i + 1} out of {len(files)}')
             name = f.stem
 
             data = np.load(self.data_dir / f'{name}.npy')

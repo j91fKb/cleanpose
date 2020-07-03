@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from natsort import natsorted
 from pathlib import Path
+from tqdm import tqdm
 
 
 class Smooth:
@@ -19,8 +20,8 @@ class Smooth:
         if not self.save_dir.is_dir():
             self.save_dir.mkdir()
 
-        for i, file in enumerate(self.data_files):
-            print(f'file {i + 1} of {len(self.data_files)}')
+        for file in tqdm(self.data_files):
+            # print(f'file {i + 1} of {len(self.data_files)}')
 
             data = np.load(file)
             data = np.transpose(data, (1, 2, 0))

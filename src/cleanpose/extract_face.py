@@ -7,6 +7,7 @@ import json
 import numpy as np
 from pathlib import Path
 from natsort import natsorted
+from tqdm import tqdm
 
 
 class ExtractFace:
@@ -22,7 +23,7 @@ class ExtractFace:
 
     def run(self):
         n = len(self.files)
-        for i, video_name in enumerate(self.files):
+        for video_name in tqdm(self.files):
             if (i+1) % 10 == 0:
                 print(f"file {i+1} of {n}")
 
