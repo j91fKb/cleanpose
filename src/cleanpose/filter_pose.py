@@ -58,7 +58,6 @@ class FilterPose:
         max_ppl = np.max(n_ppl)
 
         pose = np.zeros((len(data), int(max_ppl), 25, 3))
-        pose[:] = np.nan
 
         for i, f in enumerate(data):
             for k, p in enumerate(f['people']):
@@ -71,7 +70,6 @@ class FilterPose:
         origin = self.initial_positions.loc[ind]
 
         index_per_frame = np.zeros(pose.shape[0])
-        index_per_frame[:] = np.nan
 
         frames_labeled = []
         weight = .95

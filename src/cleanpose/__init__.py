@@ -5,3 +5,4 @@ from .initial_position import InitialPosition
 from .filter_pose import FilterPose
 from .filter_face import FilterFace
 from .smooth import Smooth
+from .interpolate import interpolate

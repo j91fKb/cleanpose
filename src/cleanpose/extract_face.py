@@ -41,7 +41,6 @@ class ExtractFace:
         max_ppl = np.max(n_ppl)
 
         pose = np.zeros((len(data), int(max_ppl), 70, 3))
-        pose[:] = np.nan
 
         for i, f in enumerate(data):
             for k, p in enumerate(f['people']):

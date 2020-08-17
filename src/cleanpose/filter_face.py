@@ -43,7 +43,6 @@ class FilterFace:
             frames = np.arange(data.shape[0], dtype='int')
 
             filtered_data = data[frames, indexes, :, :]
-            filtered_data[nan_indexes] = np.nan
 
             save_file = self.save_dir / f'{name}.npy'
             np.save(save_file, filtered_data)
